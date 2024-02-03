@@ -16,6 +16,7 @@ psycopg2-binary = "^2.9.9"
 whitenoise = {extras = ["brotli"], version = "^6.6.0"}
 gunicorn = "^21.2.0"
 flake8 = "^7.0.0"
+django-bootstrap5 = "^23.4"
 
 
 [build-system]
