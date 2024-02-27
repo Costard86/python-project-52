@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% load bootstrap5 i18n %}
+{% block content %}
+
+<h1 class="my-4">{% translate 'Sign in' %}</h1>
+<form method="post">
+  {% csrf_token %}
+  {% bootstrap_form form alert_error_type="fields" %}
+  <input role="button" class="btn btn-primary" type="submit" value="{% translate 'Log in' %}" >
+</form>
+
+{% endblock content %}

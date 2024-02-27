@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-  <h1>Hello, {{ who }}!</h1>
-</body>
-</html>
+{% extends 'layout.html' %}
+{% load django_bootstrap5 i18n %}
+{% block content %}
+
+<h1 class="my-4"></h1>
+<div class="card">
+  <div class="card-body p-5 bg-light">
+    <div class="display-4">{% translate 'Hello, User!' %}</div>
+      <p class="lead">{% translate 'Here you can set tasks to the team' %}</p>
+      <hr>
+      <a class="btn btn-primary btn-lg" href="#">{% translate 'Learn more about the author' %}</a>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
