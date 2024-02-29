@@ -10,25 +10,38 @@
       <li class="nav-item">
         <a class="nav-link" href="/users/">{% translate 'Users' %}</a>
       </li>
-
+      {% if request.user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="/statuses/">{% translate 'Statuses' %}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/labels/">{% translate 'Labels' %}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/tasks/">{% translate 'Tasks' %}</a>
+      </li>
+      {% endif %}
     </ul>
 
     <ul class="navbar-nav ms-auto me-3">
-
+      {% if not request.user.is_authenticated %}
       <li class="nav-item">
         <a class="nav-link" href="/login/">{% translate 'Sign in' %}</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/users/create/">{% translate 'Sign up' %}</a>
       </li>
-
+      {% else %}
       <li class="nav-item">
           <div class="navbar-text">{% translate 'user' %}: <strong>{{ request.user.username }}</strong></div>
       </li>
       <li class="nav-item">
-
+        <form method="post" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <button type="submit" class="nav-link btn btn-link">{% translate 'Log out' %}</button>
+        </form>
       </li>
-
+      {% endif %}
     </ul>
   </div>
 </nav>

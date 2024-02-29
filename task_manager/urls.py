@@ -1,8 +1,19 @@
 from django.contrib import admin
-from django.urls import path
-from task_manager import views
+from django.urls import path, include
+from . import views
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='home'),
+    path('users/', include('task_manager.user.urls')),
+    path(
+        'login/',
+        views.CustomLoginView.as_view(),
+        name='login'
+    ),
+    path(
+        'logout/',
+        views.CustomLogoutView.as_view(),
+        name='logout'
+    ),
     path('admin/', admin.site.urls),
 ]
