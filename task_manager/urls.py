@@ -16,5 +16,6 @@ urlpatterns = [
         name='logout'
     ),
     path('statuses/', include('task_manager.status.urls')),
+    path('tasks/', include('task_manager.task.urls')),
     path('admin/', admin.site.urls),
 ]

@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block content %}
+<h1>{% translate 'Tasks' %}</h1>
+<a class="btn btn-primary" href="{% url 'task_create' %}">{% translate 'Create task' %}</a>
+<div class="text-start container border rounded p-2">
+	<form class="form m-0" action="" method="get">
+		{{ filter.form.as_p }}
+		<input type="submit" name="filter" value="{% translate 'Show' %}">
+	</form>
+</div>
+<table class="table text-black">
+	<tr>
+		<th>ID</th>
+		<th>{% translate 'Name' %}</th>
+		<th>{% translate 'Status' %}</th>
+		<th>{% translate 'Author' %}</th>
+		<th>{% translate 'Executor' %}</th>
+		<th>{% translate 'Created at' %}</th>
+		<th></th>
+	</tr>
+	{% if filter.qs %}
+		{% for task in filter.qs %}
+		<tr>
+			<td>{{ task.id }}</td>
+			<td><a href="{% url 'task_read' task.pk %}">{{ task.name }}</a></td>
+			<td>{{ task.status }}</td>
+			<td>{{ task.author }}</td>
+			<td>{{ task.executor }}</td>
+			<td>{{ task.created_at }}</td>
+			<td>
+				<a href="{% url 'task_update' task.id %}">{% translate 'Update' %}</a>
+				<br>
+				<a href="{% url 'task_delete' task.id %}">{% translate 'Delete' %}</a>
+			</td>
+		</tr>
+		{% endfor %}
+	{% endif %}
+</table>
+{% endblock %}
