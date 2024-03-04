@@ -4,6 +4,7 @@ from .models import Task
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User
 from task_manager.status.models import Status
+from task_manager.label.models import Label
 
 
 class TaskFilter(django_filters.FilterSet):
@@ -29,7 +30,10 @@ class TaskFilter(django_filters.FilterSet):
         label_suffix="",
         queryset=User.objects.all(),
     )
-
+    labels = django_filters.ModelChoiceFilter(
+        label=_('Label'),
+        label_suffix="", queryset=Label.objects.all(),
+    )
     is_author = django_filters.BooleanFilter(
         label=_('Only my tasks'),
         label_suffix="",

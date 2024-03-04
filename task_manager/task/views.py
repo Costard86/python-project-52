@@ -5,6 +5,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import CreateView
 from django.contrib import messages
 from django.utils.translation import gettext as _
+# from django.urls import reverse_lazy
 
 from .models import Task
 from .forms import TaskForm
@@ -54,6 +55,7 @@ class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         'description',
         'status',
         'executor',
+        'labels',
     ]
 
     def form_valid(self, form):
