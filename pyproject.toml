@@ -19,6 +19,11 @@ flake8 = "^7.0.0"
 django-bootstrap5 = "^23.4"
 django-filter = "^23.5"
 
+[tool.poetry.plugins."pytest-cov"]
+addopts = "--cov=/home/pavel/python-project-52 --cov-report=xml"
+
+[tool.poetry.group.dev.dependencies]
+pytest-cov = "^4.1.0"
 
 [build-system]
 requires = ["poetry-core"]
