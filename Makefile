@@ -16,4 +16,12 @@ check: selfcheck test lint
 build: check
 	poetry build
 
+.PHONY: test
+test:
+	poetry run coverage run --source='.' manage.py test
+
+.PHONY: test-coverage
+test-coverage:
+	poetry run coverage xml
+
 .PHONY: install test lint selfcheck check build
