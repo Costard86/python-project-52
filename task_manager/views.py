@@ -8,12 +8,6 @@ from django.contrib import messages
 from django.views import View
 
 
-class IndexView(TemplateView):
-
-    def get(self, request, *args, **kwargs):
-        return render(request, 'index.html')
-
-
 def error_404(request, exception):
     return render(request, '404.html')
 

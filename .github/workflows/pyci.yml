@@ -31,7 +31,7 @@ jobs:
         run: |
           make test
         env:
-          DB_ENGINE: SQLite
+          DB_ENGINE: postgresql
           SECRET_KEY: secret
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
