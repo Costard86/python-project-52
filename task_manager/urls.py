@@ -2,9 +2,8 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 
-
+'''   path('', views.IndexView.as_view(), name='home'), '''
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='home'),
     path('users/', include('task_manager.user.urls')),
     path(
         'login/',
@@ -20,5 +19,5 @@ urlpatterns = [
     path('tasks/', include('task_manager.task.urls')),
     path('labels/', include('task_manager.label.urls')),
     path('admin/', admin.site.urls),
-    path('error/', views.index, name='error'),
+    path('', views.index, name='home'),
 ]
