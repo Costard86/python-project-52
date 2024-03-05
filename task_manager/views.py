@@ -35,9 +35,3 @@ class CustomLogoutView(LogoutView):
         msg_text = _("You are logged out")
         messages.info(self.request, msg_text)
         return response
-
-
-def index(request):
-    a = None
-    a.hello()
-    return HttpResponse("Hello, world. You're at the pollapp index.")
