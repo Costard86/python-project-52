@@ -21,45 +21,45 @@ msgstr ""
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 #: task_manager/templates/404.html:8
 msgid "Page not found"
-msgstr ""
+msgstr "Страница не найдена"
 
 #: task_manager/templates/login.html:5
 #: task_manager/templates/navigation.html:29
 msgid "Sign in"
-msgstr ""
+msgstr "Вход"
 
 #: task_manager/templates/login.html:9
 msgid "Log in"
-msgstr ""
+msgstr "Войти"
 
 #: task_manager/templates/navigation.html:3
 msgid "Task Manager"
-msgstr ""
+msgstr "Менеджер задач"
 
 #: task_manager/templates/navigation.html:11
 msgid "Users"
-msgstr ""
+msgstr "Пользователи"
 
 #: task_manager/templates/navigation.html:15
 msgid "Statuses"
-msgstr ""
+msgstr "Статусы"
 
 #: task_manager/templates/navigation.html:18
 msgid "Labels"
-msgstr ""
+msgstr "Метки"
 
 #: task_manager/templates/navigation.html:21
 msgid "Tasks"
-msgstr ""
+msgstr "Задачи"
 
 #: task_manager/templates/navigation.html:32
 msgid "Sign up"
-msgstr ""
+msgstr "Регистрация"
 
 #: task_manager/templates/navigation.html:36
 msgid "user"
-msgstr ""
+msgstr "Пользователь"
 
 #: task_manager/templates/navigation.html:41
 msgid "Log out"
-msgstr ""
+msgstr "Выход"
