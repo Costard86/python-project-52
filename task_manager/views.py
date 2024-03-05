@@ -36,7 +36,9 @@ class CustomLogoutView(LogoutView):
         messages.info(self.request, msg_text)
         return response
 
+
 def index(request):
     a = None
-    a.hello() # Creating an error with an invalid line of code
+    if a is not None and hasattr(a, 'hello') and callable(getattr(a, 'hello')):
+        a.hello()
     return HttpResponse("Hello, world. You're at the pollapp index.")
