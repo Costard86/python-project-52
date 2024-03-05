@@ -31,7 +31,7 @@ class UsersView(View):
     def get(self, request, *args, **kwargs):
         """Return all users."""
         users = User.objects.all()
-        return render(request, 'user/indexs.html', {'users': users})
+        return render(request, 'user/index.html', {'users': users})
 
 
 class UserCreateView(View):
