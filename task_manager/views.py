@@ -6,8 +6,6 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views import View
 
-from django.http import HttpResponse
-
 
 def error_404(request, exception):
     return render(request, '404.html')
