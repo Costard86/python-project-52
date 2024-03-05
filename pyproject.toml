@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hexlet-code"
-version = "0.16.3"
+version = "0.1.0"
 description = ""
 authors = ["Costard86 <Costard86@gmail.com>"]
 readme = "README.md"
@@ -18,7 +18,7 @@ gunicorn = "^21.2.0"
 flake8 = "^7.0.0"
 django-bootstrap5 = "^23.4"
 django-filter = "^23.5"
-rollbar = "^1.0.0"
+rollbar = "^0.1.0"
 
 [tool.poetry.plugins."pytest-cov"]
 addopts = "--cov=/home/pavel/python-project-52 --cov-report=xml"
