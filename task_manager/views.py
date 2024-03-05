@@ -6,8 +6,6 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views import View
 
-from django.http import HttpResponse
-
 
 def error_404(request, exception):
     return render(request, '404.html')
@@ -35,10 +33,3 @@ class CustomLogoutView(LogoutView):
         msg_text = _("You are logged out")
         messages.info(self.request, msg_text)
         return response
-
-
-def index(request):
-    a = None
-    if a is not None and hasattr(a, 'hello') and callable(getattr(a, 'hello')):
-        a.hello()
-    return HttpResponse("Hello, world. You're at the pollapp index.")
