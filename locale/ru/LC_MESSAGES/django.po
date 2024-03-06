@@ -67,12 +67,22 @@ msgstr "Здесь можно ставить задачи для команды"
 msgid "Learn more about the author"
 msgstr "Узнать об авторе"
 
+#: task_manager/views.py:9
+msgid "You are logged in"
+msgstr "Вы залогинены"
+
+#: task_manager/views.py:33
+msgid "You are logged out"
+msgstr "Вы вышли из системы"
+
 #: task_manager/label/models.py:9 task_manager/status/models.py:8
 #: task_manager/task/filters.py:13 task_manager/task/models.py:13
 #: templates/label/index.html:12 templates/status/index.html:12
 #: templates/task/index.html:18
 msgid "Name"
 msgstr "Имя"
+
+
 
 #: task_manager/label/models.py:12 task_manager/status/models.py:11
 #: task_manager/task/models.py:16 task_manager/task/models.py:28
