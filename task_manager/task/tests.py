@@ -107,4 +107,3 @@ class TaskCRUDTest(TestCase):
         self.client.post(url)
         with self.assertRaises(ObjectDoesNotExist):
             Task.objects.get(pk=task.pk)
-
