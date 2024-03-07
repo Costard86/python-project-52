@@ -15,7 +15,6 @@ dj-database-url = "^2.1.0"
 psycopg2-binary = "^2.9.9"
 whitenoise = {extras = ["brotli"], version = "^6.6.0"}
 gunicorn = "^21.2.0"
-flake8 = "^7.0.0"
 django-bootstrap5 = "^23.4"
 django-filter = "^23.5"
 rollbar = "0.16.3"
@@ -25,6 +24,7 @@ addopts = "--cov=/home/pavel/python-project-52 --cov-report=xml"
 
 [tool.poetry.group.dev.dependencies]
 pytest-cov = "^4.1.0"
+flake8 = "^7.0.0"
 
 [build-system]
 requires = ["poetry-core"]
