@@ -9,22 +9,7 @@ from django.utils.translation import gettext as _
 from .models import Task
 from .forms import TaskForm
 from .filters import TaskFilter
-from task_manager.mixins import NeedPermitMixin
-
-
-class UserLimitDeleteMixin(UserPassesTestMixin):
-    """Limit the user ability to delete only his own tasks."""
-
-    def test_func(self):
-        """Check if the user ID match with ID extracted from URL parameters."""
-        task = get_object_or_404(Task, pk=self.kwargs.get('pk'))
-        return self.request.user.pk == task.author_id
-
-    def handle_no_permission(self):
-        """Redirect to users index with flash msg."""
-        msg_text = _("You don't have permition to delete the task")
-        messages.error(self.request, msg_text)
-        return redirect('tasks_index')
+from .mixins import UserLimitDeleteMixin
 
 
 class TaskIndexView(LoginRequiredMixin, View):
@@ -109,7 +94,7 @@ class TaskDeleteView(LoginRequiredMixin, UserLimitDeleteMixin, View):
     template = 'task/delete.html'
 
     def get(self, request, *args, **kwargs):
-        """Return task delete form."""
+        """Retern task delete form."""
         task_pk = kwargs.get('pk')
         task = get_object_or_404(Task, pk=task_pk)
         return render(request, self.template, {'task': task})
@@ -118,13 +103,7 @@ class TaskDeleteView(LoginRequiredMixin, UserLimitDeleteMixin, View):
         """Delete task on POST."""
         task_pk = kwargs.get('pk')
         task = get_object_or_404(Task, pk=task_pk)
-        self.obj_id = task.author_id
-        self.msg_denied = "You don't have permission to delete the task"
-        self.redirect_way = 'tasks_index'
-        if self.test_func():
-            task.delete()
-            msg_text = _('Task successfully deleted')
-            messages.success(request, msg_text)
-        else:
-            self.handle_no_permission()
+        task.delete()
+        msg_text = _('Task successfully deleted')
+        messages.success(request, msg_text)
         return redirect('tasks_index')
