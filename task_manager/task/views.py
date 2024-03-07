@@ -5,11 +5,11 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import CreateView
 from django.contrib import messages
 from django.utils.translation import gettext as _
-# from django.urls import reverse_lazy
 
 from .models import Task
 from .forms import TaskForm
 from .filters import TaskFilter
+from task_manager.mixins import NeedPermitMixin
 
 
 class UserLimitDeleteMixin(UserPassesTestMixin):
@@ -109,7 +109,7 @@ class TaskDeleteView(LoginRequiredMixin, UserLimitDeleteMixin, View):
     template = 'task/delete.html'
 
     def get(self, request, *args, **kwargs):
-        """Retern task delete form."""
+        """Return task delete form."""
         task_pk = kwargs.get('pk')
         task = get_object_or_404(Task, pk=task_pk)
         return render(request, self.template, {'task': task})
@@ -118,7 +118,13 @@ class TaskDeleteView(LoginRequiredMixin, UserLimitDeleteMixin, View):
         """Delete task on POST."""
         task_pk = kwargs.get('pk')
         task = get_object_or_404(Task, pk=task_pk)
-        task.delete()
-        msg_text = _('Task successfully deleted')
-        messages.success(request, msg_text)
+        self.obj_id = task.author_id
+        self.msg_denied = "You don't have permission to delete the task"
+        self.redirect_way = 'tasks_index'
+        if self.test_func():
+            task.delete()
+            msg_text = _('Task successfully deleted')
+            messages.success(request, msg_text)
+        else:
+            self.handle_no_permission()
         return redirect('tasks_index')
